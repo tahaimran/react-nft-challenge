@@ -4,6 +4,7 @@ import CollectionCard from './Components/CollectionCard';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import PunkList from './Components/PunkList';
+import Main from './Components/Main';
 function App() {
   const [punklistData, setPunklistData] = useState([]);
   useEffect(()=>{
@@ -21,6 +22,7 @@ const getMyNfts = async () => {
 
     <div className="app">
     <Header />
+    <Main />
     <PunkList punklistData={punklistData}/>
     </div>
   );  
