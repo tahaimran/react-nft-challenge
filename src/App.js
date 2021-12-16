@@ -7,12 +7,12 @@ import PunkList from './Components/PunkList';
 import Main from './Components/Main';
 function App() {
   const [punklistData, setPunklistData] = useState([]);
+  const [selectedPunk, setSelectedPunk] = useState(0)
   useEffect(()=>{
 const getMyNfts = async () => {
   const openseaData= await axios.get(
     'https://testnets-api.opensea.io/assets?asset_contract_address=0xfc57397D0DA7DFFd4089df7b3F0Aa650795BFF5b&order_direction=asc'
   )
-  console.log(openseaData.data.assets);
   setPunklistData(openseaData.data.assets)
   
   }
@@ -22,8 +22,16 @@ const getMyNfts = async () => {
 
     <div className="app">
     <Header />
-    <Main />
-    <PunkList punklistData={punklistData}/>
+    {
+      punklistData.length > 0 && (
+        <>       
+         <Main punklistData={punklistData} selectedPunk={selectedPunk} />
+        <PunkList punklistData={punklistData} setSelectedPunk={setSelectedPunk} />
+        </>
+
+      )
+    }
+   
     </div>
   );  
 }

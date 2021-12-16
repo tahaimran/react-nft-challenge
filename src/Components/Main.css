@@ -65,6 +65,7 @@
 }
 .ownerNameAndHandle{
     flex: 1;
+    color: white;
 }
 .ownerHandle{
     color: #00ebfe;
